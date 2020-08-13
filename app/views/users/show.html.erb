@@ -5,6 +5,16 @@
             <h1>
                 <%= gravatar_for @user %>
                 <%= @user.name %>
+                <br /><%=@user.ngaysinh %>
+                <br /><%=@user.diachi %>
+                <br />
+                <% if @user.gioitinh == 1 %>
+                Giới tính : Male
+			    <% elsif @user.gioitinh == 2 %>
+			    Giới tính : Female
+			    <% elsif @user.gioitinh == 3 %>
+			    Giới tính : LGBT
+			    <% end %>
             </h1>
         </section>
     </aside>

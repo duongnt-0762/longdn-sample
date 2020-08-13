@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  def show
+  before_action :check_logged_in , only: :new
+    def show
     @user = User.find_by id:params[:id]
     if @user.nil?
 			flash[:danger] = "lỗi cmmr"
@@ -23,6 +24,12 @@ class UsersController < ApplicationController
   private
   def user_params
    params.require(:user).permit(:name, :email, :password,
-                                               :password_confirmation)
+                                               :password_confirmation,:diachi,:ngaysinh,:gioitinh)
+  end
+  def check_logged_in
+    if logged_in?
+      flash[:success] = 'dang nhap roi con cho a'
+      redirect_to root_path
+    end 
   end
 end
