@@ -12,6 +12,19 @@
             <%= f.password_field :password, class: 'form-control' %>
             <%= f.label :password_confirmation, "Confirmation" %>
             <%= f.password_field :password_confirmation, class: 'form-control' %>
+            <%= f.label :diachi %>
+            <%= f.text_field :diachi, class: 'form-control' %>
+            <%= f.label :ngaysinh %>
+            <%= f.date_field :ngaysinh, class: 'form-control' %>
+            <%= f.label :gioitinh %>
+            <table>
+            <tr><td width = "50px"><%= f.radio_button :gioitinh,1, class: 'form-control' %></td>
+            <td>Male</td></tr>
+            <tr><td><%= f.radio_button :gioitinh,2, class: 'form-control' %></td>
+            <td>Female</td></tr>
+            <tr><td><%= f.radio_button :gioitinh,3, class: 'form-control' %></td>
+            <td>LGBT</td></tr>
+            </table>
             <%= f.submit "Create my account", class: "btn btn-primary" %>
         <% end %>
     </div>
