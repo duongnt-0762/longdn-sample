@@ -6,6 +6,7 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 },
                       format: { with: VALID_EMAIL_REGEX },
     uniqueness: true
+    has_many :microposts, dependent: :destroy
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     validates :diachi, presence: true
@@ -36,6 +37,9 @@ class User < ApplicationRecord
     end
     def current_user?(user)
       user && user == self
+    end
+    def feed
+      self.microposts
     end
     private
     def check_date
